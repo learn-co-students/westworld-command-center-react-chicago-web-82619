@@ -152,9 +152,20 @@ class App extends Component {
         axios.patch(`http://localhost:3000/hosts/${host.id}`, host);
       }
     });
-    this.setState({
+
+    const msg = !this.state.allActivated
+      ? `Activated all hosts.`
+      : `Decommission all hosts.`;
+    this.setState((prevState) => ({
       allActivated: !this.state.allActivated,
-    });
+      logs: [
+        {
+          type: 'warn',
+          msg: msg,
+        },
+        ...prevState.logs,
+      ],
+    }));
   };
 
   render() {
