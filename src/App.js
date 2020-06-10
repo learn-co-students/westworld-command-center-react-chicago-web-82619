@@ -12,7 +12,8 @@ class App extends Component {
   state = {
     areas: [],
     hosts: [],
-    allActivated: false,
+    allActivated: '',
+    logs: [],
   };
 
   componentDidMount = async () => {
@@ -51,6 +52,9 @@ class App extends Component {
 
     const newHost = this.state.hosts.find((h) => h.id === host.id);
     newHost.active = !host.active;
+    const msg = newHost.active
+      ? `Activated ${host.firstName}`
+      : `Decommission ${host.firstName}`;
 
     axios
       .patch(`http://localhost:3000/hosts/${host.id}`, newHost)
@@ -64,9 +68,16 @@ class App extends Component {
       }
     });
 
-    this.setState({
+    this.setState((prevState) => ({
       hosts: updatedHosts,
-    });
+      logs: [
+        {
+          type: 'warn',
+          msg: msg,
+        },
+        ...prevState.logs,
+      ],
+    }));
   };
 
   handleAreaChange = (host, value) => {
@@ -79,9 +90,17 @@ class App extends Component {
     console.log('hostsInArea count: ', hostsInArea.length);
     console.log('area limit: ', area.limit);
 
+    const areaName = value
+      .split('_')
+      .map(
+        (name) => name.slice(0, 1).toUpperCase() + name.slice(1, name.length)
+      )
+      .join(' ');
+
     if (hostsInArea.length < area.limit) {
       console.log('good to go');
       host.area = value;
+
       console.log(host);
       axios
         .patch(`http://localhost:3000/hosts/${host.id}`, host)
@@ -98,11 +117,28 @@ class App extends Component {
               }
             });
 
-            this.setState({
+            this.setState((prevState) => ({
               hosts: updatedHosts,
-            });
+              logs: [
+                {
+                  type: 'notify',
+                  msg: `${host.firstName} set in area ${areaName}`,
+                },
+                ...prevState.logs,
+              ],
+            }));
           }
         });
+    } else {
+      this.setState((prevState) => ({
+        logs: [
+          {
+            type: 'error',
+            msg: `Too many hosts. Cannot add ${host.firstName} to ${areaName}.`,
+          },
+          ...prevState.logs,
+        ],
+      }));
     }
   };
 
@@ -122,6 +158,7 @@ class App extends Component {
   };
 
   render() {
+    console.log(this.state.logs);
     return (
       <Segment id="app">
         <WestworldMap
@@ -136,6 +173,7 @@ class App extends Component {
           handleAreaChange={this.handleAreaChange}
           handleToggleActivation={this.handleToggleActivation}
           allActivated={this.state.allActivated}
+          logs={this.state.logs}
         />
       </Segment>
     );

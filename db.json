@@ -7,7 +7,7 @@
       "active": false,
       "imageUrl": "https://vignette.wikia.nocookie.net/westworld/images/5/51/Dolores_Abernathy_Vanishing_Point.jpg/revision/latest?cb=20180613181613",
       "gender": "Female",
-      "area": "python_pass",
+      "area": "lowlands",
       "authorized": false,
       "selected": false
     },
@@ -18,7 +18,7 @@
       "active": false,
       "imageUrl": "https://vignette.wikia.nocookie.net/westworld/images/b/b6/Bernard_Les_Ecorches.png/revision/latest/scale-to-width-down/310?cb=20180604190617",
       "gender": "Male",
-      "area": "python_pass",
+      "area": "lowlands",
       "authorized": false,
       "selected": false
     },
@@ -29,7 +29,7 @@
       "active": false,
       "imageUrl": "https://vignette.wikia.nocookie.net/westworld/images/d/d8/Maeve_Les_Ecorches.jpg/revision/latest?cb=20180530183051",
       "gender": "Female",
-      "area": "pariah",
+      "area": "lowlands",
       "authorized": false,
       "selected": false
     },
@@ -40,7 +40,7 @@
       "active": false,
       "imageUrl": "https://vignette.wikia.nocookie.net/westworld/images/8/82/Akecheta_Kiksuya.jpg/revision/latest?cb=20180607183222",
       "gender": "Male",
-      "area": "python_pass",
+      "area": "lowlands",
       "authorized": false,
       "selected": false
     },
@@ -51,9 +51,9 @@
       "active": false,
       "imageUrl": "https://vignette.wikia.nocookie.net/westworld/images/a/a2/Peter_Abernathy_%281%29.jpg/revision/latest?cb=20161024014816",
       "gender": "Male",
-      "area": "high_plains",
+      "area": "lowlands",
       "authorized": false,
-      "selected": true
+      "selected": false
     },
     {
       "id": 6,
@@ -62,9 +62,9 @@
       "active": false,
       "imageUrl": "https://vignette.wikia.nocookie.net/westworld/images/b/b2/Angela_Reunion.jpg/revision/latest/scale-to-width-down/310?cb=20180509174920",
       "gender": "Female",
-      "area": "under_construction",
+      "area": "high_plains",
       "authorized": false,
-      "selected": true
+      "selected": false
     },
     {
       "id": 7,
@@ -95,7 +95,7 @@
       "active": false,
       "imageUrl": "https://vignette.wikia.nocookie.net/westworld/images/a/a9/Teddy_Flood_Phase_Space.jpg/revision/latest/scale-to-width-down/310?cb=20180526115338",
       "gender": "Male",
-      "area": "pariah",
+      "area": "python_pass",
       "authorized": false,
       "selected": true
     },
@@ -108,7 +108,7 @@
       "gender": "Female",
       "area": "under_construction",
       "authorized": false,
-      "selected": true
+      "selected": false
     },
     {
       "id": 11,
@@ -129,7 +129,8 @@
       "imageUrl": "https://vignette.wikia.nocookie.net/westworld/images/7/78/Hector_Journey_Into_Night.jpg/revision/latest/scale-to-width-down/310?cb=20180613183102",
       "gender": "Male",
       "area": "lowlands",
-      "authorized": false
+      "authorized": false,
+      "selected": false
     },
     {
       "id": 13,
@@ -140,7 +141,7 @@
       "gender": "Male",
       "area": "under_construction",
       "authorized": false,
-      "selected": true
+      "selected": false
     },
     {
       "id": 14,
@@ -151,7 +152,7 @@
       "gender": "Male",
       "area": "under_construction",
       "authorized": false,
-      "selected": true
+      "selected": false
     },
     {
       "id": 15,
@@ -162,7 +163,7 @@
       "gender": "Male",
       "area": "badlands",
       "authorized": false,
-      "selected": true
+      "selected": false
     }
   ],
   "areas": [

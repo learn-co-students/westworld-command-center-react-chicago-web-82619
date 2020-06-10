@@ -18,10 +18,24 @@ const LogPanel = (props) => {
     return logs;
   };
 
+  const renderLogs = () => {
+    let logs = props.logs.map(log => {
+      if (log.type === 'warn') {
+        return Log.warn(log.msg)
+      } else if (log.type === 'notify') {
+        return Log.notify(log.msg)
+      } else {
+        return Log.error(log.msg)
+      }
+    })
+
+    return logs
+  }
+
   return (
     <Segment className="HQComps" id="logPanel">
       <pre>
-        {dummyLogs().map((log, i) => (
+        {renderLogs().map((log, i) => (
           <p key={i} className={log.type}>
             {log.msg}
           </p>

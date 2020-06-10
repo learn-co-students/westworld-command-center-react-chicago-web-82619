@@ -29,6 +29,7 @@ class Headquarters extends Component {
           <LogPanel
             handleToggleActivation={this.props.handleToggleActivation}
             allActivated={this.props.allActivated}
+            logs={this.props.logs}
           />
         </Grid.Column>
       </Grid>
