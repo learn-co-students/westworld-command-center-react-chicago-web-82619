@@ -1,25 +1,32 @@
 import React from 'react';
-import '../stylesheets/Area.css'
+import '../stylesheets/Area.css';
+import HostList from './HostList';
 
-const Area = () => (
+const Area = (props) => {
+  let label = props.name
+    .split('_')
+    .map((name) => name.slice(0, 1).toUpperCase() + name.slice(1, name.length))
+    .join(' ');
 
-  <div className='area' id={/* Pass in the area name here to make sure this is styled correctly */}>
-    <h3 className='labels'>{/* Don't just pass in the name from the data...clean that thing up */}</h3>
+  let hosts = props.hosts && props.hosts.filter((h) => h.area === props.name && h.active);
 
-    {/* See Checkpoint 1 item 2 in the Readme for a clue as to what goes here */}
+  return (
+    <div className="area" id={props.name}>
+      <h3 className="labels">{label}</h3>
 
-  </div>
-
-)
+      <HostList hosts={hosts} handleHostSelection={props.handleHostSelection} />
+    </div>
+  );
+};
 
 Area.propTypes = {
-  hosts: function(props, propName, componentName){
-    if(props.hosts.length > props.limit){
+  hosts: function (props, propName, componentName) {
+    if (props.hosts.length > props.limit) {
       throw Error(
         `HEY!! You got too many hosts in ${props.name}. The limit for that area is ${props.limit}. You gotta fix that!`
-      )
+      );
     }
-  }
-}
+  },
+};
 
 export default Area;
